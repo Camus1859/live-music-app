@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mocha": "^3.5.0",
+    "spotify-web-api-node": "^2.4.0",
+    "twilio": "^3.6.2"
+  },
+  "scripts": {
+    "test": "mocha ./test/**/*-test.js"
+  }
+}
