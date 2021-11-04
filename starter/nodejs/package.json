@@ -1,10 +1,15 @@
 {
-  "dependencies": {
-    "mocha": "^3.5.0",
-    "spotify-web-api-node": "^2.4.0",
-    "twilio": "^3.6.2"
-  },
-  "scripts": {
-    "test": "mocha ./test/**/*-test.js"
-  }
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "mocha": "^3.5.0",
+        "nodemon": "^2.0.14",
+        "spotify-web-api-node": "^2.4.0",
+        "twilio": "^3.6.2"
+    },
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "mocha ./test/**/*-test.js"
+    }
 }

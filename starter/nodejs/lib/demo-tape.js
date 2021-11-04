@@ -1,12 +1,14 @@
 var SpotifyWebApi = require('spotify-web-api-node');
 var twilio = require('twilio');
+require('dotenv').config();
+
 
 var spotifyApi = new SpotifyWebApi({
-  clientId: '28d9eff5d0aa4471b7f4a9e8278c1043',
-  clientSecret: '839540f0cdd74690b71beaa9bef9fb0b'
+  clientId: `${SPOTIFY_API_ID}`,
+  clientSecret: `${SPOTIFY_API_SECRET}`
 });
 
-var twilioClient = new twilio('ACbb8840b48cc93d4b05e987d82f7a281a', '2f76fe031153c1251a93bcafa64a4980');
+var twilioClient = new twilio(`${TWILIO_API_ONE}`, `${TWILIO_API_TWO}`);
 
 var textTrack = function(client, artist, track) {
   var body = `${artist.name}'s top track: ${track.name}`;
