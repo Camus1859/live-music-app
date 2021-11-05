@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
 const UserInfo = () => {
+    const [artistNameAndUserCellNum, setArtistNameAndUserCellNum] = useState({
+        artist: '',
+        cellNumber: '',
+    });
     const formSubmitHandler = async (e) => {
         e.preventDefault();
         setArtistNameAndUserCellNum({
