@@ -10,6 +10,10 @@ app.use(express.json({ extended: true }));
 
 const PORT = process.env.PORT || 5000;
 
+app.post('/artistAndCellNumber', async (req, res) => {
+    console.log(req.body);
+});
+
 app.listen(PORT, () => {
     console.log('server started on port 5000');
 });
