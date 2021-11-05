@@ -1,7 +1,50 @@
 import React, { useState } from 'react';
 
 const UserInfo = () => {
+    const formSubmitHandler = async (e) => {
+        e.preventDefault();
+        setArtistNameAndUserCellNum({
+            artist: '',
+            cellNumber: '',
+        });
 
+        try {
+            const response = await fetch('/artistAndCellNumber', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                    credentials: 'include',
+                },
+                body: JSON.stringify(artistNameAndUserCellNum),
+            });
+
+            if (response.ok) {
+                const clientResponse = await response.json();
+
+                if (clientResponse.error.length > 0) {
+                    //show user validation errors
+                    SetShowUserMsgs(clientResponse.error);
+                    return;
+                }
+
+                if (clientResponse.success.length > 0) {
+                    console.log('successssss');
+                    //show user validation success
+                    SetShowUserMsgs(clientResponse.success);
+                    return;
+                }
+            } else {
+                //some front end error response is not a 200
+                const clientResponse = await response.json();
+                SetShowUserMsgs(clientResponse.error);
+            }
+        } catch (e) {
+            //show User Error(e) network error
+
+            console.log(e);
+        }
+    };
             <form onSubmit={formSubmitHandler}>
                 <label>
                     Artist
