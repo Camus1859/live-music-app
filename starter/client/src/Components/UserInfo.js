@@ -6,6 +6,7 @@ const UserInfo = () => {
         artist: '',
         cellNumber: '',
     });
+
     const [showUserMsgs, SetShowUserMsgs] = useState([]);
 
     const formSubmitHandler = async (e) => {
@@ -52,6 +53,9 @@ const UserInfo = () => {
             console.log(e);
         }
     };
+
+    return (
+        <>
             <UserMessages showUserMsgs={showUserMsgs} />
 
             <form onSubmit={formSubmitHandler}>
@@ -90,6 +94,8 @@ const UserInfo = () => {
                 </label>
                 <button type='submit'>Submit</button>
             </form>
+        </>
+    );
 };
 
 export default UserInfo;
