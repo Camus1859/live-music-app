@@ -1,11 +1,8 @@
 import React from 'react';
+import UserInfo from './Components/UserInfo';
 
-const App = ()=> {
-    return(
-        <div>
-            Hello World
-        </div>
-    )
-}
+const App = () => {
+    return <UserInfo />;
+};
 
-export default App
+export default App;
