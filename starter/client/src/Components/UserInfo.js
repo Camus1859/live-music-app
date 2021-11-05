@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import UserMessages from './UserMessages';
 
 const UserInfo = () => {
     const [artistNameAndUserCellNum, setArtistNameAndUserCellNum] = useState({
         artist: '',
         cellNumber: '',
     });
+    const [showUserMsgs, SetShowUserMsgs] = useState([]);
+
     const formSubmitHandler = async (e) => {
         e.preventDefault();
         setArtistNameAndUserCellNum({
@@ -49,6 +52,8 @@ const UserInfo = () => {
             console.log(e);
         }
     };
+            <UserMessages showUserMsgs={showUserMsgs} />
+
             <form onSubmit={formSubmitHandler}>
                 <label>
                     Artist
