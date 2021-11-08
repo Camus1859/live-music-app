@@ -1,11 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 
-const UserMessages = ({ showUserMsgs }) => {
-    const userMsgs = showUserMsgs.map((msg, index) => (
-        <li key={index}>{msg}</li>
-    ));
-
-    return <>{showUserMsgs.length > 0 ? <ul>{userMsgs}</ul> : ''}</>;
+const UserMessages = ({ msg }) => {
+    return <>{!msg.length ? '' :  <ul>{msg}</ul>}</>;
 };
 
 export default UserMessages;
