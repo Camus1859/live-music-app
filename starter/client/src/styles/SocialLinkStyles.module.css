@@ -1,0 +1,9 @@
+.info {
+    display: flex;
+    justify-content: center;
+}
+
+.artistInfo{
+    display: flex;
+    justify-content: center;
+}

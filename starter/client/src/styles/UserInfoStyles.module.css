@@ -1,0 +1,27 @@
+.form{
+    padding: 1.5rem;
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    justify-content: space-between;
+}
+
+.input{
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+}
+
+.title{
+    color: whitesmoke;
+    display: inline-flex;
+  align-items: center;
+  font-size: 2.5rem;
+
+}
+
+.btn{
+    width: 1%;
+    visibility: hidden;
+
+}
