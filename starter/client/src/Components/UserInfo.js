@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import UserMessages from './UserMessages';
+import ArtistInfo from './ArtistInfo';
+import ArtistHeadShot from './ArtistHeadShot';
+import UpcomingConcerts from './UpcomingConcerts';
+import InputForm from './ArtistInputForm';
+// import userInfoStyles from '../styles/UserInfoStyles.module.css'
 
 const UserInfo = () => {
     const [artistNameAndUserCellNum, setArtistNameAndUserCellNum] = useState({
@@ -7,7 +12,8 @@ const UserInfo = () => {
         cellNumber: '',
     });
 
-    const [showUserMsgs, SetShowUserMsgs] = useState([]);
+    const [showUserMsgs, setShowUserMsgs] = useState('');
+    const [artistData, setArtistData] = useState(undefined);
 
     const formSubmitHandler = async (e) => {
         e.preventDefault();
@@ -17,7 +23,7 @@ const UserInfo = () => {
         });
 
         try {
-            const response = await fetch('/artistAndCellNumber', {
+            const response = await fetch('/getArtistSendToCell', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,70 +36,38 @@ const UserInfo = () => {
             if (response.ok) {
                 const clientResponse = await response.json();
 
-                if (clientResponse.error.length > 0) {
-                    //show user validation errors
-                    SetShowUserMsgs(clientResponse.error);
-                    return;
-                }
+                console.log(clientResponse);
 
-                if (clientResponse.success.length > 0) {
-                    console.log('successssss');
-                    //show user validation success
-                    SetShowUserMsgs(clientResponse.success);
-                    return;
-                }
+                setShowUserMsgs(clientResponse.sms.message);
+                setArtistData(clientResponse);
             } else {
                 //some front end error response is not a 200
                 const clientResponse = await response.json();
-                SetShowUserMsgs(clientResponse.error);
+                setShowUserMsgs(clientResponse.sms.message);
             }
         } catch (e) {
-            //show User Error(e) network error
-
+            //show User network error ?
             console.log(e);
         }
     };
 
     return (
         <>
-            <UserMessages showUserMsgs={showUserMsgs} />
+            <UserMessages msg={showUserMsgs} />
+            <InputForm
+                formSubmitHandler={formSubmitHandler}
+                setArtistNameAndUserCellNum={setArtistNameAndUserCellNum}
+                artistNameAndUserCellNum={artistNameAndUserCellNum}
+            />
 
-            <form onSubmit={formSubmitHandler}>
-                <label>
-                    Artist
-                    <input
-                        type='text'
-                        name='artist'
-                        value={artistNameAndUserCellNum.artist}
-                        onChange={(e) =>
-                            setArtistNameAndUserCellNum({
-                                ...artistNameAndUserCellNum,
-                                artist: e.target.value,
-                            })
-                        }
-                        placeholder="Enter an artist's name"
-                    />
-                </label>
-
-                <label>
-                    Enter Your Cell Phone Number
-                    <input
-                        type='tel'
-                        name='cellNumber'
-                        value={artistNameAndUserCellNum.cellNumber}
-                        onChange={(e) =>
-                            setArtistNameAndUserCellNum({
-                                ...artistNameAndUserCellNum,
-                                cellNumber: e.target.value,
-                            })
-                        }
-                        placeholder='123-456-7890'
-                        pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                        required
-                    />
-                </label>
-                <button type='submit'>Submit</button>
-            </form>
+            {artistData && (
+                <>
+                    {' '}
+                    <ArtistHeadShot artistHeadShot={artistData.artistInfo} />
+                    <ArtistInfo artistData={artistData} />{' '}
+                    <UpcomingConcerts concertData={artistData} />
+                </>
+            )}
         </>
     );
 };
