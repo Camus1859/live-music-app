@@ -1,5 +1,10 @@
+
+import { config } from 'dotenv';
+config();
+
 import getArtistVenueService from './services/getArtistVenueService.js'
 import fetch from 'node-fetch';
+
 
 
 

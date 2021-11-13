@@ -1,8 +1,5 @@
 import useArtistToFindTrackAPI from '../externalApis/spotifyFindTrackAPI.js'
 
-import { config } from 'dotenv';
-config();
-
 
 const getArtist = async (req, res) => {
 

@@ -1,14 +1,23 @@
 {
-  "name": "starter",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "14.18.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "main": "index.js",
+    "type": "module",
+    "engines": {
+        "node": "14.18.1"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "mocha": "^3.5.0",
+        "node-fetch": "^3.1.0",
+        "nodemon": "^2.0.15",
+        "spotify-web-api-node": "^2.5.0",
+        "twilio": "^3.71.1"
+    },
+    "scripts": {
+        "start": "nodemon index.js",
+        "heroku-postbuild": "cd client && npm install && npm run build",
+        "dev": "nodemon index.js",
+        "test": "mocha ./test/**/*-test.js"
+    }
 }

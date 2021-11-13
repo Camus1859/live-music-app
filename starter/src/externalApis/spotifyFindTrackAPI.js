@@ -1,5 +1,10 @@
+
+import { config } from 'dotenv';
+config();
+
 import SpotifyWebApi from 'spotify-web-api-node';
 import sendArtistAndTrackToCellService from './services/sendArtistAndTrackToCellService.js';
+
 
 var spotifyApi = new SpotifyWebApi({
     clientId: `${process.env.SPOTIFY_API_ID}`,
@@ -45,6 +50,7 @@ function useArtistToFindTrackAPI(artist, cellNumber, res, userData) {
                     spotifyApi.getArtistTopTracks(artist.id, 'US').then(
                         function (data) {
                             sendArtistAndTrackToCellService(
+                                cellNumber,
                                 artist.name,
                                 data.body.tracks[0],
                                 res,
