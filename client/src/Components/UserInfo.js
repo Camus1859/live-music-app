@@ -36,8 +36,6 @@ const UserInfo = () => {
             if (response.ok) {
                 const clientResponse = await response.json();
 
-                console.log(clientResponse);
-
                 setShowUserMsgs(clientResponse.sms.message);
                 setArtistData(clientResponse);
             } else {

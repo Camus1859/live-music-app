@@ -67,7 +67,6 @@ const addArtistDataToObj =  (events, artistData, artist) => {
             const { twitter, facebook, instagram } = {
                 ...event._embedded.attractions[0].externalLinks,
             };
-            console.log(twitter)
 
             artistData.socialMediaLinks = {
                 twitter: !twitter ? '' : twitter[0].url,
@@ -92,9 +91,6 @@ const addArtistDataToObj =  (events, artistData, artist) => {
 
 
 const useArtistIdToFindVenueAPI = async (artist, artistID, res, userData)=>{
-
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-    console.log(userData)
 
     const response = await fetch(
         `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${artistID}&sort=date,asc&apikey=${process.env.TICKET_MASTER_API}`,
