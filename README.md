@@ -1,3 +1,22 @@
-### <a href="https://live-concert-app-anderson.herokuapp.com/">Live Concert App</a>
+  ## Live Music App
 
-### Overall, I found building this app to be moderately challenging and fun. I spent extra time refactoring the code to ensure readability and scalability in regards to the architecture of the app. I incorporated Ticket Masters API which was pretty fun. To improve the app I would write more tests, including e2e and unit tests, sanitize the users inputs, write smaller/more concise commits, and improve on the UI. I would also probably want to implement some sort of caching or rate limit to reduce overloading the server, improve security, and increase the overall speed of the app.
+  Find artists, view upcoming concerts, and get their top track sent to your phone via SMS.
+
+  ### Features
+
+  - Artist search via Spotify API
+  - Concert listings via Ticketmaster API
+  - SMS notifications via Twilio API
+
+  ### Tech Stack
+
+  Express, React, Spotify Web API, Ticketmaster API, Twilio
+
+  ### Run Locally
+
+  ```bash
+  npm install
+  npm run dev
+
+  Requires .env with Spotify, Ticketmaster, and Twilio credentials.
+
