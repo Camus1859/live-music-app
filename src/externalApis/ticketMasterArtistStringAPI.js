@@ -23,25 +23,20 @@ const getArtistDataObj = () => {
 };
 
 const useArtistToFindArtistIdAPI = async (artist, res, userData) => {
-    const url = new URL(
-        `https://app.ticketmaster.com/discovery/v2/attractions.json&?keyword=${artist}`
-    );
+    const url = `https://app.ticketmaster.com/discovery/v2/attractions.json?keyword=${encodeURIComponent(artist)}&apikey=${process.env.TICKET_MASTER_API}`;
 
-    const response = await fetch(
-        `${url}&apikey=${process.env.TICKET_MASTER_API}&apikey=${process.env.TICKET_MASTER_API}`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json;charset=UTF-8',
-                Accept: 'application/json',
-            },
-        }
-    );
+    const response = await fetch(url);
 
     const artistObj = await response.json();
 
     const artistData = getArtistDataObj()
 
+    if (!artistObj._embedded || !artistObj._embedded.attractions || artistObj._embedded.attractions.length === 0) {
+        userData.sms.message = "No concert info found for this artist on Ticketmaster.";
+        const result = { ...userData, ...artistData };
+        res.status(200).send(result);
+        return;
+    }
 
     if (artistObj._embedded.attractions[0].upcomingEvents._total === 0) {
         artistData.artistInfo.name =

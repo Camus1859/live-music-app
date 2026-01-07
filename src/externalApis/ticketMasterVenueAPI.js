@@ -93,19 +93,19 @@ const addArtistDataToObj =  (events, artistData, artist) => {
 const useArtistIdToFindVenueAPI = async (artist, artistID, res, userData)=>{
 
     const response = await fetch(
-        `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${artistID}&sort=date,asc&apikey=${process.env.TICKET_MASTER_API}`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json;charset=UTF-8',
-                Accept: 'application/json',
-            },
-        }
+        `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${artistID}&sort=date,asc&apikey=${process.env.TICKET_MASTER_API}`
     );
 
     const venueObj = await response.json();
 
     let artistData = getArtistDataObj()
+
+    if (!venueObj._embedded || !venueObj._embedded.events) {
+        userData.sms.message = "No upcoming events found for this artist.";
+        const result = { ...userData, ...artistData };
+        res.status(200).send(result);
+        return;
+    }
 
     const { events } = venueObj._embedded;
 
