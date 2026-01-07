@@ -57,7 +57,7 @@ function useArtistToFindTrackAPI(artist, cellNumber, res, userData) {
                                 userData
                             );
 
-                            userData.sms.message = `You have successfully sent ${data.body.tracks[0].name} to ${cellNumber}`;
+                            userData.sms.message = `[Demo] SMS would be sent to ${cellNumber} with "${data.body.tracks[0].name}"`;
                         },
                         function (err) {
                             console.error(err);
