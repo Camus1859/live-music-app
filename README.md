@@ -2,6 +2,8 @@
 
   Find artists, view upcoming concerts, and get their top track sent to your phone via SMS.
 
+  **Live Demo:** https://live-music-app-bm5o.onrender.com/
+
   ### Features
 
   - Artist search via Spotify API
