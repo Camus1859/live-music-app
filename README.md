@@ -2,7 +2,7 @@
 
   Find artists, view upcoming concerts, and get their top track sent to your phone via SMS.
 
-  **Live Demo:** https://live-music-app-bm5o.onrender.com/
+  **Live Demo:** <a href="https://live-music-app-bm5o.onrender.com/" target="_blank">https://live-music-app-bm5o.onrender.com/</a>
 
   ### Features
 
@@ -16,9 +16,5 @@
 
   ### Run Locally
 
-  ```bash
-  npm install
-  npm run dev
-
-  Requires .env with Spotify, Ticketmaster, and Twilio credentials.
+  Requires API credentials for Spotify, Ticketmaster, and Twilio in a `.env` file.
 
