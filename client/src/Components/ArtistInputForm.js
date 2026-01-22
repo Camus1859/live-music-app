@@ -9,7 +9,7 @@ const InputForm = ({
     return (
         <form className={userInfoStyles.form} onSubmit={formSubmitHandler}>
             <span className={userInfoStyles.title}>
-                Are you ready for LIVE music
+                Are you ready for LIVE music ?
             </span>
 
             <section className={userInfoStyles.inputSection}>
