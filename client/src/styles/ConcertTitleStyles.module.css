@@ -23,3 +23,8 @@ li:nth-child(odd) {
     background: rgb(233, 233, 233);
     border-style: dashed;
 }
+
+
+ul {
+    padding-left: 0rem;
+}

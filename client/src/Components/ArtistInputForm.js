@@ -12,7 +12,7 @@ const InputForm = ({
                 Are you ready for LIVE music
             </span>
 
-            <section>
+            <section className={userInfoStyles.inputSection}>
                 <label>
                     <input
                         className={userInfoStyles.input}
